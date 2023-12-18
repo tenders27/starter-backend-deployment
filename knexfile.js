@@ -23,7 +23,12 @@ module.exports = {
 
   production: {
     client: "postgresql",
-    connection: URL,
+    connection: {
+      connectionString: URL,
+      ssl: {
+        rejectUnauthorized: false // This is important, but be aware of the security implications
+      },
+    },
     migrations: {
       directory: __dirname + "/api/db/migrations",
     },
